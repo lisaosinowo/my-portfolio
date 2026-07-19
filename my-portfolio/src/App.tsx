@@ -3,11 +3,11 @@ import './App.css'
 function App() {
 
   return (
-    <>
-      <h1 className="text-3xl font-bold text-blue-500 flex justify-center">
-      Hello World!
-    </h1>
-    </>
+    <div className="">
+      <h1 className="text-3xl font-bold text-blue-500 flex justify-center bg-purple-100">
+        Hello World!
+      </h1>
+    </div>
   )
 }
 
