@@ -1,11 +1,12 @@
 import ProfileInformation from "./ProfileInformation";
 import SectionButton from "./SectionButton";
+import SectionContainer from "./SectionContainer";
 
 const MainContainer = () => {
    return (
       <div className="">
          <div className="relative flex justify-center">
-            <div className="border absolute top-[6.5rem] flex main-container-width lg:top-24 md:top-32 sm:top-32">
+            <div className="absolute top-[6.5rem] flex main-container-width lg:top-24 md:top-32 sm:top-32">
                <ProfileInformation />
             </div>
          </div>
@@ -15,6 +16,10 @@ const MainContainer = () => {
             <SectionButton text="About" />
             <SectionButton text="Languages" />
             <SectionButton text="Projects" />
+         </div>
+
+         <div className="mt-[0.55rem] sm:mt-[0.65rem] md:mt-[0.85rem] lg:mt-[0.75rem]">
+            <SectionContainer />
          </div>
       </div>
    );
