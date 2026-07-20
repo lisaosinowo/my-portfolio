@@ -27,6 +27,7 @@ html {
 
 :root {
 --white: #fff;
+--off-white: #f5f5f5d3;
 --black: #111;
 --dark-navy-purple1: #221825;
 --dark-navy-purple2: #1d1d22;
@@ -37,5 +38,5 @@ html {
 --navy-purple: #5e416ebe;
 --purple: #744288;
 --pink: #be3f93;
---main-font: 'Poppins', sans-serif;
+--main-font: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
