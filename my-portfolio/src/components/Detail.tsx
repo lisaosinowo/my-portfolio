@@ -1,4 +1,4 @@
-const Detail = ({src, text}) => {
+const Detail = ({src, text}: {src: string; text: string}) => {
   return (
     <div className="flex">
       <img src={src} className="w-5 h-5 mr-[5px]" />
