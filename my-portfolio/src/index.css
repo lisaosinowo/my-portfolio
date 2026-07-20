@@ -1,6 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* @import "tailwindcss"; */
+
+@layer components {
+   .main-container-width {
+      @apply w-5/6 sm:w-3/4 lg:w-[550px] justify-self-center items-center;
+   }
+}
+
+@theme {
+  --breakpoint-smm: 668px;  
+}
 
 * {
    box-sizing: border-box;
@@ -17,7 +28,7 @@ html {
 :root {
 --white: #fff;
 --black: #111;
---dark-navy-purple1: #19121b;
+--dark-navy-purple1: #221825;
 --dark-navy-purple2: #1d1d22;
 --dark-navy-purple3: #3d3044be;
 --lilac: #c493dd;
