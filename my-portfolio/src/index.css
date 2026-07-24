@@ -11,6 +11,10 @@
    .section-container {
       @apply border border-[var(--dark-navy-purple3)] border-4 rounded-xl text-white main-container-width cursor-pointer mb-4;
    }
+
+   .center {
+      @apply flex justify-center;
+   }
 }
 
 @theme {
@@ -23,6 +27,7 @@
    padding: 0;
    font-family: var(--main-font);
    background-color: var(--dark-navy-purple1);
+   color: var(--off-white);
 }
 
 html {
