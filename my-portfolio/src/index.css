@@ -7,6 +7,10 @@
    .main-container-width {
       @apply w-5/6 sm:w-3/4 lg:w-[550px] justify-self-center items-center;
    }
+
+   .section-container {
+      @apply border border-[var(--dark-navy-purple3)] border-4 rounded-xl text-white main-container-width cursor-pointer mb-4;
+   }
 }
 
 @theme {
