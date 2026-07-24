@@ -5,7 +5,7 @@ import SectionContainer from "./SectionContainer";
 const MainContainer = () => {
    return (
       <div className="">
-         <div className="relative flex justify-center">
+         <div className="relative center">
             <div className="absolute top-[6.5rem] flex main-container-width lg:top-24 md:top-32 sm:top-32">
                <ProfileInformation />
             </div>

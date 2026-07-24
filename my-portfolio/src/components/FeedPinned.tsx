@@ -5,8 +5,8 @@ import check from "../media/header/correct.png";
 
 const FeedPinned = () => {
    return (
-      <div className="flex justify-center py-8">
-         <div className="w-[89%] flex">
+      <div className="center py-8">
+        <div className="w-[89%] flex">
             <div className="flex flex-col">
                <div className="w-[3.2rem]">
                   <div className="flex justify-end">
