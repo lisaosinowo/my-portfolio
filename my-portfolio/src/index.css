@@ -5,7 +5,7 @@
 
 @layer components {
    .main-container-width {
-      @apply w-5/6 sm:w-3/4 lg:w-[550px] justify-self-center items-center;
+      @apply w-[95%] sm:w-3/4 lg:w-[550px] justify-self-center items-center;
    }
 
    .section-container {
