@@ -22,26 +22,26 @@ const FeedPinned = () => {
             </div>
 
             <div className="ml-[0.35rem]">
-               <p className="text-sm mt-[0.15rem]">Pinned</p>
+               <p className="text-sm min-[768px]:text-xl mt-[0.15rem]">Pinned</p>
                <div className="flex mt-2 mb-1">
                   <div className="flex">
                      {/* Pinned Details */}
-                     <p className="text-sm mr-1">Lisa</p>
+                     <p className="text-sm min-[768px]:text-xl mr-1">Lisa</p>
                      <img
                         src={check}
-                        className="w-[0.8rem] h-[0.8rem] mt-1 mr-[5px]"
+                        className="min-[768px]:w-[1.1rem] h-[1.1rem] w-[0.8rem] h-[0.8rem] mt-1 mr-[5px]"
                      />
                   </div>
-                  <p className="text-sm mr-[5px] text-[--grey]">
+                  <p className="text-sm min-[768px]:text-xl mr-[5px] text-[--grey]">
                      @lisaosinowo{" "}
                   </p>
-                  <p className="text-sm mr-[5px] text-[--grey]">·</p>
-                  <p className="text-sm mr-[5px] text-[--grey]">20 July 2026</p>
+                  <p className="text-sm mr-[5px] text-[--grey] min-[768px]:text-xl">·</p>
+                  <p className="text-sm mr-[5px] text-[--grey] max-[358px]:text-xs min-[768px]:text-xl">20 July 2026</p>
                </div>
 
                {/* Pinned Text */}
                <div>
-                  <p className="text-sm text-[--off-white]">
+                  <p className="text-sm min-[768px]:text-xl text-[--off-white]">
                      Welcome to my Portfolio 🤗 This is a space where I post my
                      coding journey with JavaScript, React, Python, HTML, and
                      CSS + SASS. Feel free to browse through this site!

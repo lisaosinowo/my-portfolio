@@ -4,7 +4,8 @@ const SectionButton = ({ text }: { text: string }) => {
          <span
             className="relative 
             inline-block 
-            text-white 
+            text-white
+            min-[768px]:text-xl 
             font-bold 
             cursor-pointer 
             p-[10px] 
