@@ -1,7 +1,7 @@
 const Language = ({img}: {img: string}) => {
   return (
-    <div>
-      <img src={img} className="w-full h-full" />
+    <div className="w-full h-full center items-center">
+      <img src={img} className="w-16 h-16 object-contain" />
     </div>
   )
 }
