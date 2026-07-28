@@ -2,7 +2,7 @@ const About = () => {
    return (
       <div className="center py-6">
          <div className="w-[89%]">
-            <h1 className="text-2xl min-[768px]:text-4xl font-bold text-[--white] mb-6">
+            <h1 className="text-2xl min-[768px]:text-3xl font-bold text-[--white] mb-6">
                Hello World! 😊
             </h1>
             <p className="mb-3 text-sm min-[768px]:text-xl">
