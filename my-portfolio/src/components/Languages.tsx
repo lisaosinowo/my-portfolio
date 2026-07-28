@@ -1,6 +1,4 @@
 import FlipCard from "./FlipCard";
-import Language from "./Language";
-import LanguageName from "./LanguageName";
 
 import javascript from "../media/languages/js.png";
 import typescript from "../media/languages/typescript.png";
@@ -22,10 +20,7 @@ import mongoose from "../media/languages/Mongoose.js.png";
 import mysql from "../media/languages/mysql.svg";
 import mongodb from "../media/languages/mongodb.svg";
 
-import { useState } from "react";
-
 const Languages = () => {
-   const [flipped, setFlipped] = useState(false);
 
    return (
       <div className="center py-6">
