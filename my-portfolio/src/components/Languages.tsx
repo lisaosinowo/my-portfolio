@@ -1,4 +1,5 @@
 import Language from "./Language";
+import LanguageName from "./LanguageName";
 
 import javascript from "../media/languages/js.png";
 import typescript from "../media/languages/typescript.png";
@@ -20,7 +21,10 @@ import mongoose from "../media/languages/Mongoose.js.png"
 import mysql from "../media/languages/mysql.svg"
 import mongodb from "../media/languages/mongodb.svg"
 
+import { useState } from "react";
+
 const Languages = () => {
+   const [flipped, setFlipped] = useState(false);
    return (
       <div className="center py-6">
          <div className="w-[89%] border">
@@ -28,9 +32,19 @@ const Languages = () => {
                Frontend Languages
             </p>
             <div className="grid grid-cols-4 gap-4">
-               <div className="border border-pink-200 h-24">
-                  <Language img={javascript} />
+               <div className={`border border-pink-200 transition-transform ${flipped ? "[transform:rotateY(180deg)]" : ""}`} onMouseEnter={() => setFlipped(true)} onMouseLeave={() => setFlipped(false)}>
+                  {!flipped && (
+                     <>
+                        <Language img={javascript} />
+                     </>
+                  )}
+                  {flipped && (
+                     <>
+                     <LanguageName name={"JavaScript"} bgColor={"bg-[#FFDF00]"} textColor={"text-black"} />
+                     </>
+                  )}
                </div>
+
                <div className="border border-pink-200">
                   <Language img={typescript} />
                </div>
@@ -46,7 +60,7 @@ const Languages = () => {
                Frontend Frameworks and Libraries
             </p>
             <div className="grid grid-cols-4 gap-4">
-               <div className="border border-purple-200 h-24">
+               <div className="border border-purple-200">
                   <Language img={react} />
                </div>
                <div className="border border-purple-200">
@@ -63,7 +77,7 @@ const Languages = () => {
                Backend Languages
             </p>
             <div className="grid grid-cols-4 gap-4">
-               <div className="border border-purple-200 h-24">
+               <div className="border border-purple-200">
                   <Language img={python} />
                </div>
                <div className="border border-purple-200">
@@ -81,7 +95,7 @@ const Languages = () => {
                Backend Frameworks and Libraries
             </p>
             <div className="grid grid-cols-4 gap-4">
-               <div className="border border-purple-200 h-24">
+               <div className="border border-purple-200">
                   <Language img={expressjs} />
                </div>
                <div className="border border-purple-200">
@@ -93,7 +107,7 @@ const Languages = () => {
                Databases
             </p>
             <div className="grid grid-cols-4 gap-4">
-               <div className="border border-purple-200 h-28 flex justify-center content-center">
+               <div className="border border-purple-200 flex justify-center content-center">
                   <Language img={mysql} />
                </div>
                <div className="border border-purple-200">
