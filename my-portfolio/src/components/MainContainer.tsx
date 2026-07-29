@@ -13,7 +13,7 @@ const MainContainer = () => {
 
    return (
       <div className="overflow-x-hidden">
-         <div className="relative center">
+         <div className="relative center max-[860px]:mt-[-1rem] max-[340px]:mt-[-1.5rem]">
             <div className="absolute top-[6.5rem] flex main-container-width lg:top-24 md:top-32 sm:top-32">
                <ProfileInformation />
             </div>
@@ -26,7 +26,7 @@ const MainContainer = () => {
             <SectionButton text="Projects" onSelect={handleSelect} sectionName="projects" />
          </div>
 
-         <div className="mt-[0.55rem] sm:mt-[0.65rem] md:mt-[0.85rem] lg:mt-[0.75rem]">
+         <div className="mt-[0.55rem] sm:mt-[0.65rem] md:mt-[0.85rem] lg:mt-[0.75rem] ">
             <SectionContainer active={active} />
          </div>
       </div>
