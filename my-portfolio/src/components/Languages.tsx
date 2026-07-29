@@ -26,7 +26,7 @@ const Languages = () => {
       <div className="center py-6">
          <div className="w-[89%]">
             <p className="text-2xl min-[768px]:text-3xl max-[400px]:text-xl font-bold text-[--white] mb-4">
-               Frontend Languages
+               Frontend Languages 💻
             </p>
             {/* Frontend Languages */}
             <div className="grid grid-cols-4 gap-4 pb-4">
