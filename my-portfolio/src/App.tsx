@@ -15,7 +15,7 @@ function App() {
           {/* Profile pic + follow button */}
           <div className="absolute flex justify-between mt-4 main-container-width inset-x-0 max-[385px]:bottom-[-40%] max-[492px]:bottom-[-32%] bottom-[-28%] md:bottom-[-20%] lg:bottom-[-15%] mx-auto bg-[--lilac1] rounded-3xl">
             <img src={LisaCircleImg} alt="Lisa" className="w-32 h-32 rounded-full border-2" />
-            <button className="bg-[--lilac2] hover:bg-[--lilac] min-[768px]:text-xl text-white font-bold py-2 px-6 rounded-3xl cursor-pointer">Follow</button>
+            <button className="bg-[--lilac2] hover:bg-[--lilac] min-[768px]:text-xl text-white font-bold py-2 px-6 rounded-3xl cursor-pointer" onClick={() => window.open('https://www.linkedin.com/in/lisa-osinowo-3bb18b236/', '_blank')}>Follow</button>
           </div>
         </div>
         <MainContainer />
