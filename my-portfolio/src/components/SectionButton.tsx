@@ -1,7 +1,13 @@
-const SectionButton = ({ text }: { text: string }) => {
+interface SectionButtonProps {
+   text: string,
+   onSelect: (sectionName: string) => void,
+   sectionName: string
+}
+
+const SectionButton = ({ text, onSelect, sectionName }: SectionButtonProps) => {
    return (
       <div>
-         <span
+         <span onClick={() => onSelect(sectionName)}
             className="relative 
             inline-block 
             text-white
