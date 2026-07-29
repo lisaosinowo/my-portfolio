@@ -24,12 +24,12 @@ const Languages = () => {
 
    return (
       <div className="center py-6">
-         <div className="w-[89%] border">
-            <p className="text-2xl min-[768px]:text-3xl max-[400px]:text-xl font-bold text-[--white] mb-2">
+         <div className="w-[89%]">
+            <p className="text-2xl min-[768px]:text-3xl max-[400px]:text-xl font-bold text-[--white] mb-4">
                Frontend Languages
             </p>
             {/* Frontend Languages */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-4 pb-4">
                <FlipCard
                   img={javascript}
                   name="JavaScript"
@@ -59,10 +59,10 @@ const Languages = () => {
                />
             </div>
 
-            <p className="text-2xl min-[768px]:text-3xl max-[400px]:text-xl font-bold text-[--white] mb-2 mt-5">
+            <p className="text-2xl min-[768px]:text-3xl max-[400px]:text-xl font-bold text-[--white] mb-4 mt-5">
                Frontend Frameworks and Libraries
             </p>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-4 pb-4">
                <FlipCard
                   img={react}
                   name="React"
@@ -92,10 +92,10 @@ const Languages = () => {
                />
             </div>
 
-            <p className="text-2xl min-[768px]:text-3xl max-[400px]:text-xl font-bold text-[--white] mb-2 mt-5">
+            <p className="text-2xl min-[768px]:text-3xl max-[400px]:text-xl font-bold text-[--white] mb-4 mt-5">
                Backend Languages
             </p>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-4 pb-4">
                <FlipCard
                   img={python}
                   name="Python"
@@ -125,10 +125,10 @@ const Languages = () => {
                />
             </div>
 
-            <p className="text-2xl min-[768px]:text-3xl max-[400px]:text-xl font-bold text-[--white] mb-2 mt-5">
+            <p className="text-2xl min-[768px]:text-3xl max-[400px]:text-xl font-bold text-[--white] mb-4 mt-5">
                Backend Frameworks and Libraries
             </p>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-4 pb-4">
                <FlipCard
                   img={expressjs}
                   name="Express.js"
@@ -144,10 +144,10 @@ const Languages = () => {
                />
             </div>
 
-            <p className="text-2xl min-[768px]:text-3xl max-[400px]:text-xl font-bold text-[--white] mb-2 mt-5">
+            <p className="text-2xl min-[768px]:text-3xl max-[400px]:text-xl font-bold text-[--white] mb-4 mt-5">
                Databases
             </p>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-4 pb-4">
                <FlipCard
                   img={mysql}
                   name="MySQL"
