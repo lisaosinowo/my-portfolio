@@ -23,7 +23,7 @@ const SectionContainer = ({ active }: SectionContainerProps) => {
       }
    };
 
-   return <div className="section-container">{showSection()}</div>;
+   return <div className="section-container transition-shadow duration-300 hover:shadow-[0_0_20px_var(--lilac)]">{showSection()}</div>;
 };
 
 export default SectionContainer;
