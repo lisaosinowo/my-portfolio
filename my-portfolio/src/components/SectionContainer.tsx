@@ -1,6 +1,7 @@
 import Feed from "./Feed"
 import About from "./About"
 import Languages from "./Languages"
+import Projects from "./Projects"
 
 const SectionContainer = () => {
   return (
@@ -13,6 +14,9 @@ const SectionContainer = () => {
       </div>
       <div className="section-container">
         <Languages />
+      </div>
+      <div className="section-container">
+        <Projects />
       </div>
     </div>
   )
