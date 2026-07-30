@@ -8,7 +8,7 @@ const Projects = () => {
                My Projects 👾
             </h1>
             {/* GitHub Profile */}
-            <p className="text-sm min-[768px]:text-xl mb-4">
+            <p className="text-base min-[768px]:text-xl mb-4">
                Click below to view my Github Profile:
             </p>
             <div className="center">
@@ -17,7 +17,7 @@ const Projects = () => {
             
 
             {/* Favourite GitHub Projects */}
-            <p className="text-sm min-[768px]:text-xl mb-6">
+            <p className="text-base min-[768px]:text-xl mb-6">
                Here are some of my favourite projects! Click on one to view on Github:
             </p>
             <div className="center items-center flex-col">

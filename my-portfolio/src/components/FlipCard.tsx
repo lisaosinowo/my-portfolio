@@ -61,7 +61,7 @@ const FlipCard = ({ img, name, bgColor, textColor }: FlipCardProps) => {
                   textColor={textColor}
                />
             )}
-            <p className="min-[1300px]:hidden text-sm max-[376px]:text-xs min-[768px]:text-xl max-[301px]:mt-0 max-[430px]:mt-1 min-[768px]:mt-2">
+            <p className="min-[1300px]:hidden text-base max-[409px]:text-sm min-[768px]:text-xl max-[301px]:mt-0 max-[430px]:mt-2 min-[768px]:mt-2">
                {name}
             </p>
          </div>
