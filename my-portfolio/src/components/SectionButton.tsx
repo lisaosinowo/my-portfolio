@@ -11,7 +11,9 @@ const SectionButton = ({ text, onSelect, sectionName }: SectionButtonProps) => {
             className="relative 
             inline-block 
             text-white
-            min-[768px]:text-xl 
+            min-[768px]:text-xl
+            max-[384px]:text-lg
+            text-xl 
             font-bold 
             cursor-pointer 
             p-[10px] 
