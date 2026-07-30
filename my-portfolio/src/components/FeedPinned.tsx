@@ -42,9 +42,7 @@ const FeedPinned = () => {
                {/* Pinned Text */}
                <div>
                   <p className="text-sm min-[768px]:text-xl text-[--off-white]">
-                     Welcome to my Portfolio 🤗 This is a space where I post my
-                     coding journey with JavaScript, React, Python, HTML, and
-                     CSS + SASS. Feel free to browse through this site!
+                     Welcome to my Portfolio 🤗 I had a lot of fun developing this site and I will be improving it when new ideas spawn. That's the life of a developer! 🫡 Use the four headers above this pinned post to explore!
                   </p>
                </div>
 
