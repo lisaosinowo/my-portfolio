@@ -10,7 +10,7 @@ const FeedPinned = () => {
             <div className="flex flex-col">
                <div className="w-[3.2rem]">
                   <div className="flex justify-end">
-                     <img src={pinImg} className="w-6 h-6 mb-2 " />
+                     <img src={pinImg} className="w-6 h-6 mb-2 min-[768px]:w-8 min-[768px]:h-8 min-[768px]:mb-2 min-[768px]:mt-[-0.3rem]" />
                   </div>
                   {/* Lisa's Profile Picture */}
                   <img
@@ -21,7 +21,7 @@ const FeedPinned = () => {
                </div>
             </div>
 
-            <div className="ml-[0.35rem]">
+            <div className="ml-[0.35rem] min-[768px]:mt-[-0.55rem]">
                <p className="text-sm min-[768px]:text-xl mt-[0.15rem]">Pinned</p>
                <div className="flex mt-2 mb-1">
                   <div className="flex">
