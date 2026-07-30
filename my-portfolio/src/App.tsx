@@ -9,7 +9,7 @@ function App() {
          <div className="">
             <div className="relative">
                {/* Hero picture of desktop */}
-               <div className="w-full h-0 pb-[25.8rem] max-[990px]:pb-[25rem] max-[950px]:pb-[24rem] max-[905px]:pb-[23rem] max-[850px]:pb-[22rem] max-[800px]:pb-[21rem] max-[768px]:pb-[21rem] max-[730px]:pb-[18.5rem] max-[707px]:pb-[17.5rem] max-[660px]:pb-[17rem] max-[640px]:pb-[21rem] max-[592px]:pb-[19rem] max-[540px]:pb-[19.5rem] max-[489px]:pb-[17.5rem] max-[435px]:pb-[18rem] max-[400px]:pb-[16.5rem] max-[340px]:pb-[15.5rem] max-[318px]:pb-[15rem] relative">
+               <div className="w-full h-0 pb-[26.1rem] max-[990px]:pb-[25rem] max-[950px]:pb-[24rem] max-[905px]:pb-[23rem] max-[850px]:pb-[22rem] max-[800px]:pb-[21rem] max-[768px]:pb-[21rem] max-[730px]:pb-[18.5rem] max-[707px]:pb-[17.5rem] max-[660px]:pb-[17rem] max-[640px]:pb-[21rem] max-[592px]:pb-[19rem] max-[540px]:pb-[19.5rem] max-[489px]:pb-[17.5rem] max-[435px]:pb-[18rem] max-[400px]:pb-[16.5rem] max-[340px]:pb-[15.5rem] max-[318px]:pb-[15rem] relative">
                   <img
                      src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHB5aWVyb3E0ZmV0eG9vYmFwcDExa2pmMWMxOXAwdGVmYXE5Zm94aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/NBjAY6fJTGYzPlgneY/giphy.gif"
                      alt="description of the gif"
