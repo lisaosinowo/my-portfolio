@@ -41,7 +41,7 @@ const FeedPinned = () => {
 
                {/* Pinned Text */}
                <div>
-                  <p className="text-base min-[768px]:text-xl max-[375px]:text-sm text-[--off-white]">
+                  <p className="text-base min-[768px]:text-xl max-[375px]:text-base max-[358px]:text-[0.91rem] text-[--off-white]">
                      Welcome to my Portfolio 🤗 I had a lot of fun developing this site and I will be improving it when new ideas spawn. That's the life of a developer! 🫡 Use the four headers above this pinned post to explore!
                   </p>
                </div>
