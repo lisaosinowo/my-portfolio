@@ -9,7 +9,7 @@
    }
 
    .section-container {
-      @apply border border-[var(--dark-navy-purple3)] border-4 rounded-xl text-white main-container-width cursor-pointer mb-4;
+      @apply border border-[var(--lilac2)] border-4 rounded-xl text-white main-container-width cursor-pointer mb-4;
    }
 
    .center {
@@ -26,8 +26,7 @@
    margin: 0;
    padding: 0;
    font-family: var(--main-font);
-   background-color: var(--dark-navy-purple1);
-   color: var(--off-white);
+   color: var(--white);
 }
 
 html {
@@ -43,7 +42,7 @@ html {
 --dark-navy-purple3: #3d3044be;
 --lilac: #c493dd;
 --lilac2: #9e67b4;
---grey: #868585; 
+--grey: #909090; 
 --navy-purple: #5e416ebe;
 --purple: #744288;
 --pink: #be3f93;
