@@ -1,7 +1,7 @@
 import Language from "./Language";
 import LanguageName from "./LanguageName";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface FlipCardProps {
    img: string;
@@ -10,8 +10,35 @@ interface FlipCardProps {
    textColor: string;
 }
 
+function useMediaQuery(query: string) {
+   const [matches, setMatches] = useState(
+      () => window.matchMedia(query).matches
+   );
+
+   useEffect(() => {
+      const mediaQueryList = window.matchMedia(query);
+      const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
+
+      mediaQueryList.addEventListener("change", listener);
+      return () => mediaQueryList.removeEventListener("change", listener);
+   }, [query]);
+
+   return matches;
+}
+
 const FlipCard = ({ img, name, bgColor, textColor }: FlipCardProps) => {
    const [flipped, setFlipped] = useState(false);
+   const isNarrow = useMediaQuery("(max-width: 1299px)");
+
+   const handleMouseEnter = () => {
+      if (!isNarrow) setFlipped(true);
+   };
+
+   const handleMouseLeave = () => {
+      if (!isNarrow) setFlipped(false);
+   };
+
+   const showFlipped = flipped && !isNarrow;
 
    return (
       <div className="">
@@ -19,13 +46,13 @@ const FlipCard = ({ img, name, bgColor, textColor }: FlipCardProps) => {
             className={`
           w-full h-28 max-[768px]:h-24 max-[530px]:h-20 max-[530px]:h-16
           flex items-center justify-center
-          transition-transform duration-300 max-[1100px]:flex-col
-          ${flipped ? "[transform:rotateY(180deg)]" : ""}
+          transition-transform duration-300 max-[1300px]:flex-col
+          ${showFlipped ? "[transform:rotateY(180deg)]" : ""}
         `}
-            onMouseEnter={() => setFlipped(true)}
-            onMouseLeave={() => setFlipped(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
          >
-            {!flipped ? (
+            {!showFlipped ? (
                <Language img={img} />
             ) : (
                <LanguageName
@@ -34,7 +61,7 @@ const FlipCard = ({ img, name, bgColor, textColor }: FlipCardProps) => {
                   textColor={textColor}
                />
             )}
-            <p className="min-[1025px]:hidden text-sm max-[376px]:text-xs min-[768px]:text-xl max-[301px]:mt-0 max-[430px]:mt-1 min-[768px]:mt-2">
+            <p className="min-[1300px]:hidden text-sm max-[376px]:text-xs min-[768px]:text-xl max-[301px]:mt-0 max-[430px]:mt-1 min-[768px]:mt-2">
                {name}
             </p>
          </div>
