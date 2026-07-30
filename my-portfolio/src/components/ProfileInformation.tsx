@@ -7,7 +7,7 @@ import calendarImg from "../media/header/calendar.png"
 
 const ProfileInformation = () => {
    return (
-      <div className="main-container-width">
+      <div className="w-[80%]">
          {/* Profile name and verified tick */}
          <div className="flex">
             <h1 className="min-[768px]:text-4xl text-3xl font-extrabold text-white">Lisa Osinowo</h1>
