@@ -16,7 +16,7 @@ const ProfileInformation = () => {
          
          {/* Username */}
          <p className="text-[--grey] min-[768px]:text-xl text-base pb-[4px]">@lisaosinowo</p>
-         <p className="flex inline-block whitespace-nowrap text-white min-[768px]:text-xl max-[375px]:text-sm text-base w-[450px] pb-[4px]">"Predict your future by creating it."<img src={codeIMG} className="w-5 h-5 ml-[7px] " /></p>
+         <p className="flex inline-block whitespace-nowrap text-white min-[768px]:text-xl max-[375px]:text-sm text-base w-[450px] pb-[4px]">"Predict your future by creating it."<img src={codeIMG} className="w-5 h-5 ml-[7px] min-[768px]:mt-1 max-[768px]:mt-[0.15rem] max-[375px]:mt-[-0.01rem]" /></p>
          <p className="text-white whitespace-nowrap min-[768px]:text-xl max-[375px]:text-sm text-base pb-[4px]">Fullstack Developer. Certified Tester.</p>
 
          {/* The Profile Details */}
