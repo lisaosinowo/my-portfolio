@@ -21,8 +21,7 @@ const Projects = () => {
                Here are some of my favourite projects! Click on one to view on Github:
             </p>
             <div className="center items-center flex-col">
-               <Project name={"Nike E-commerce Site"} projectURL={"https://github.com/lisaosinowo/E-commerce-site-nike"} />
-               <Project name={"Nail Appointment RESTful API"} projectURL={"https://github.com/lisaosinowo/Nail-appointment-API"} />
+               <Project name={"Inventory Management"} projectURL={"https://github.com/lisaosinowo/inventory-management"} />
                <Project name={"Roleplay Game"} projectURL={"https://github.com/lisaosinowo/Roleplay-Game"} />
                <Project name={"Snake Game"} projectURL={"https://github.com/lisaosinowo/Snake-game"} />
                <Project name={"Turtle Race Game"} projectURL={"https://github.com/lisaosinowo/Turtle-race"} />
