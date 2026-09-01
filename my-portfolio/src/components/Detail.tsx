@@ -1,4 +1,9 @@
-const Detail = ({src, text}: {src: string; text: string}) => {
+interface DetailProps {
+  src: string;
+  text: string;
+}
+
+const Detail = ({src, text}: DetailProps) => {
   return (
     <div className="flex">
       <img src={src} className="min-[768px]:w-7 min-[768px]:h-7 w-5 h-5 mr-[5px]" />
