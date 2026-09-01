@@ -3,11 +3,7 @@ import About from "./About";
 import Languages from "./Languages";
 import Projects from "./Projects";
 
-interface SectionContainerProps {
-   active: string;
-}
-
-const SectionContainer = ({ active }: SectionContainerProps) => {
+const SectionContainer = ({ active }: {active: string}) => {
    const showSection = () => {
       switch (active) {
          case "feed":
