@@ -1,72 +1,72 @@
-import { test, expect } from "@playwright/test";
+import { test } from "../src/fixtures/fixtures";
 
-test.beforeEach(async ({ page }) => {
-   await page.goto("http://localhost:5173/");
-   const projectsSpan = page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[4]/span');
-   await projectsSpan.click();
+test.beforeEach(async ({ portfolio }) => {
+   await portfolio.goTo();
+   await portfolio.navigateToProjectsSection();
    test.setTimeout(10000);
 });
 
-test.afterEach(async ({ page }) => {
-   await page.close();
+test.afterEach(async ({ portfolio }) => {
+   await portfolio.close();
 });
 
 test.describe('Projects section visibility', () => {
-   test('text visibility', async({ page }) => {
-         await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/h1')).toBeVisible();
-         await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[1]')).toBeVisible();
-         await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[2]')).toBeVisible();
+   test('text visibility', async({ portfolio }) => {
+      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/h1');
+      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[1]');
+      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[2]');
       });
 
-   test('div visability', async({ page }) => {
+   test('div visability', async({ portfolio }) => {
       // GitHub profile
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div')).toBeVisible();
+      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div');
 
       // Projects
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]')).toBeVisible();
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]')).toBeVisible();
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]')).toBeVisible();
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]')).toBeVisible();
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[5]')).toBeVisible();
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[6]')).toBeVisible();
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[7]')).toBeVisible();
+      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]');
+      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]');
+      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]');
+      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]');
+      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[5]');
+      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[6]');
+      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[7]');
    });
 })
 test.describe('Projects section texts', () => {
-   test('correct header and paragraph text', async({ page }) => {
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/h1')).toHaveText('My Projects 👾');
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[1]')).toHaveText('Click below to view my Github Profile:');
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[2]')).toHaveText('Here are some of my favourite projects! Click on one to view on Github:');
+   test('correct header and paragraph text', async({ portfolio }) => {
+      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/h1', 'My Projects 👾');
+      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[1]', 'Click below to view my Github Profile:');
+      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[2]', 'Here are some of my favourite projects! Click on one to view on Github:');
    });
 
-   test('correct github profile and project names', async({ page }) => {
+   test('correct github profile and project names', async({ portfolio }) => {
       // GitHub profile
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div/p')).toHaveText('GitHub Profile');
+      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div/p', 'GitHub Profile');
 
       // Projects
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]/p')).toHaveText('Inventory Management');
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]/p')).toHaveText('Roleplay Game');
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]/p')).toHaveText('Snake Game');
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]/p')).toHaveText('Turtle Race Game');
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[5]/p')).toHaveText('Quiz Game');
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[6]/p')).toHaveText('BlackJack Game');
-      await expect(page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[7]/p')).toHaveText('Hangman Game');
+      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]/p', 'Inventory Management');
+      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]/p', 'Roleplay Game');
+      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]/p', 'Snake Game');
+      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]/p', 'Turtle Race Game');
+      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[5]/p', 'Quiz Game');
+      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[6]/p', 'BlackJack Game');
+      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[7]/p', 'Hangman Game');
    });   
 });
 
 test.describe('Project links',  () => {
-   test('links go to correct url', async({ page, context }) => {
+   test('links go to correct url', async({ portfolio }) => {
       // GitHub profile
-      const pagePromise = context.waitForEvent('page'); // Wait for the new page (tab) to open
-      await page.locator('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div').click();
-      const newPage = await pagePromise;
-      await newPage.waitForLoadState(); // Wait for the new tab to finish loading
-      await expect(newPage).toHaveURL('https://github.com/lisaosinowo');
-      await expect(page).toHaveURL('http://localhost:5173/');
-      await newPage.close();
+      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div', 'https://github.com/lisaosinowo');
 
       // Projects
-      // Create a page object model
+      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]', 'https://github.com/lisaosinowo/inventory-management');
+      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]', 'https://github.com/lisaosinowo/Roleplay-Game');
+      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]', 'https://github.com/lisaosinowo/Snake-game');
+      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]', 'https://github.com/lisaosinowo/Turtle-race');
+      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[5]', 'https://github.com/lisaosinowo/Quiz-game');
+      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[6]', 'https://github.com/lisaosinowo/BlackJack-game');
+      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[7]', 'https://github.com/lisaosinowo/Hangman');
    });
-
 });
+
+// Note to self: create tests for the hover effect
