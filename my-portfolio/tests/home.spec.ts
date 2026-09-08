@@ -9,62 +9,116 @@ test.afterEach(async ({ portfolio }) => {
    await portfolio.close();
 });
 
-test.describe('Home page visability', () => {
-   test('text visability', async({ portfolio }) => {
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[1]/h1');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/p[1]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/p[2]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/p[3]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[2]/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[3]/p');
+const textCases = [
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[1]/h1',
+      expected: "Lisa Osinowo",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/p[1]',
+      expected: "@lisaosinowo",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/p[2]',
+      expected: '"Predict your future by creating it."',
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/p[3]',
+      expected: "Fullstack Developer. Certified Tester.",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/p',
+      expected: "Available",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[2]/p',
+      expected: "Links",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[3]/p',
+      expected: "Joined 07/26",
+   },
+];
+
+const imageLocators = [
+   '//*[@id="root"]/div/div[2]/div/div[1]/div[1]/img',
+   '//*[@id="root"]/div/div[2]/div/div[1]/div[2]/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[1]/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/p[2]/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[2]/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[3]/img',
+];
+
+const spanCases = [
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[1]/span',
+      expected: "Feed",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[2]/span',
+      expected: "About",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[3]/span',
+      expected: "Languages",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[4]/span',
+      expected: "Projects",
+   },
+];
+
+const followButtonLocator =
+   '//*[@id="root"]/div/div[2]/div/div[1]/div[2]/button';
+const mainContentLocator = '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div';
+
+test.describe("Home page visibility", () => {
+   textCases.forEach(({ input }, index) => {
+      test(`text visibility - case ${index + 1}`, async ({ portfolio }) => {
+         await portfolio.isVisible(input);
+      });
    });
 
-   test('image visibility', async({ portfolio }) => {
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[1]/div[1]/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[1]/div[2]/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[1]/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/p[2]/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[2]/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[3]/img');
+   imageLocators.forEach((locator, index) => {
+      test(`image visibility - case ${index + 1}`, async ({ portfolio }) => {
+         await portfolio.isVisible(locator);
+      });
    });
 
-   test('span element visibility', async({ portfolio }) => {
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[1]/span');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[2]/span');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[3]/span');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[4]/span');
+   spanCases.forEach(({ input }, index) => {
+      test(`span element visibility - case ${index + 1}`, async ({
+         portfolio,
+      }) => {
+         await portfolio.isVisible(input);
+      });
    });
 
-   test('follow button visibility', async({ portfolio }) => {
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[1]/div[2]/button');
+   test("follow button visibility", async ({ portfolio }) => {
+      await portfolio.isVisible(followButtonLocator);
    });
 
-   test('main content container visibility', async({ portfolio }) => {
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div');
+   test("main content container visibility", async ({ portfolio }) => {
+      await portfolio.isVisible(mainContentLocator);
    });
 });
 
-test.describe('Home page texts', () => {
-   test('correct text', async({ portfolio }) => {
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[1]/h1', 'Lisa Osinowo');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/p[1]', '@lisaosinowo');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/p[2]', '"Predict your future by creating it."');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/p[3]', 'Fullstack Developer. Certified Tester.');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/p', 'Available');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[2]/p', 'Links');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[3]/p', 'Joined 07/26');
+test.describe("Home page texts", () => {
+   textCases.forEach(({ input, expected }, index) => {
+      test(`correct text - case ${index + 1}`, async ({ portfolio }) => {
+         await portfolio.hasText(input, expected);
+      });
    });
 
-   test('correct span element text', async({ portfolio }) => {
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[1]/span', 'Feed');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[2]/span', 'About');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[3]/span', 'Languages');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[2]/div[4]/span', 'Projects');
+   spanCases.forEach(({ input, expected }, index) => {
+      test(`correct span element text - case ${index + 1}`, async ({
+         portfolio,
+      }) => {
+         await portfolio.hasText(input, expected);
+      });
    });
 
-   test('correct follow button text', async({ portfolio }) => {
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[1]/div[2]/button', 'Follow');
+   test("correct follow button text", async ({ portfolio }) => {
+      await portfolio.hasText(followButtonLocator, "Follow");
    });
 });

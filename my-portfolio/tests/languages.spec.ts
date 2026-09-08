@@ -10,72 +10,130 @@ test.afterEach(async ({ portfolio }) => {
    await portfolio.close();
 });
 
-test.describe('Languages section visibility', () => {
-   test('text visability', async({ portfolio }) => {
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[1]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[1]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[2]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[3]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[4]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[2]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[3]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[1]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[2]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[3]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[4]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[4]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[4]/div[1]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[4]/div[2]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[5]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[5]/div[1]/div/p');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[5]/div[2]/div/p');
+const textCases = [
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[1]',
+      expected: "Frontend Languages",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[1]/div/p',
+      expected: "JavaScript",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[2]/div/p',
+      expected: "TypeScript",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[3]/div/p',
+      expected: "HTML",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[4]/div/p',
+      expected: "CSS",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[2]',
+      expected: "Frontend Frameworks and Libraries",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]/div/p',
+      expected: "React",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]/div/p',
+      expected: "TailwindCSS",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]/div/p',
+      expected: "Bootstrap",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]/div/p',
+      expected: "Sass",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[3]',
+      expected: "Backend Languages",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[1]/div/p',
+      expected: "Python",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[2]/div/p',
+      expected: "C#",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[3]/div/p',
+      expected: "Java",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[4]/div/p',
+      expected: "Node.js",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[4]',
+      expected: "Backend Frameworks and Libraries",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[4]/div[1]/div/p',
+      expected: "Express.js",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[4]/div[2]/div/p',
+      expected: "Mongoose",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[5]',
+      expected: "Databases",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[5]/div[1]/div/p',
+      expected: "MySQL",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[5]/div[2]/div/p',
+      expected: "MongoDB",
+   },
+];
+
+const imageLocators = [
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[1]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[2]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[3]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[4]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[1]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[2]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[3]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[4]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[4]/div[1]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[4]/div[2]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[5]/div[1]/div/div/img',
+   '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[5]/div[2]/div/div/img',
+];
+
+test.describe("Languages section visibility", () => {
+   textCases.forEach(({ input }, index) => {
+      test(`text visibility - case ${index + 1}`, async ({ portfolio }) => {
+         await portfolio.isVisible(input);
+      });
    });
 
-   test('image visibility', async({ portfolio }) => {
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[1]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[2]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[3]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[4]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[1]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[2]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[3]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[4]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[4]/div[1]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[4]/div[2]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[5]/div[1]/div/div/img');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[5]/div[2]/div/div/img');
+   imageLocators.forEach((locator, index) => {
+      test(`image visibility - case ${index + 1}`, async ({ portfolio }) => {
+         await portfolio.isVisible(locator);
+      });
    });
-})
-test.describe('Languages section texts', () => {
-   test('correct text', async({ portfolio }) => {
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[1]', 'Frontend Languages');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[1]/div/p', 'JavaScript');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[2]/div/p', 'TypeScript');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[3]/div/p', 'HTML');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div[4]/div/p', 'CSS');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[2]', 'Frontend Frameworks and Libraries');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]/div/p', 'React');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]/div/p', 'TailwindCSS');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]/div/p', 'Bootstrap');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]/div/p', 'Sass');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[3]', 'Backend Languages');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[1]/div/p', 'Python');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[2]/div/p', 'C#');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[3]/div/p', 'Java');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[3]/div[4]/div/p', 'Node.js');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[4]', 'Backend Frameworks and Libraries');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[4]/div[1]/div/p', 'Express.js');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[4]/div[2]/div/p', 'Mongoose');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[5]', 'Databases');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[5]/div[1]/div/p', 'MySQL');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[5]/div[2]/div/p', 'MongoDB');
+});
+
+test.describe("Languages section texts", () => {
+   textCases.forEach(({ input, expected }, index) => {
+      test(`correct text - case ${index + 1}`, async ({ portfolio }) => {
+         await portfolio.hasText(input, expected);
+      });
    });
 });

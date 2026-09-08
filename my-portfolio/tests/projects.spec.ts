@@ -10,62 +10,112 @@ test.afterEach(async ({ portfolio }) => {
    await portfolio.close();
 });
 
-test.describe('Projects section visibility', () => {
-   test('text visibility', async({ portfolio }) => {
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/h1');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[1]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[2]');
+const headerAndParagraphCases = [
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/h1',
+      expected: "My Projects 👾",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[1]',
+      expected: "Click below to view my Github Profile:",
+   },
+   {
+      input: '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[2]',
+      expected:
+         "Here are some of my favourite projects! Click on one to view on Github:",
+   },
+];
+
+const projectCases = [
+   {
+      locator:
+         '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div',
+      name: "GitHub Profile",
+      url: "https://github.com/lisaosinowo",
+   },
+   {
+      locator:
+         '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]',
+      name: "Inventory Management",
+      url: "https://github.com/lisaosinowo/inventory-management",
+   },
+   {
+      locator:
+         '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]',
+      name: "Roleplay Game",
+      url: "https://github.com/lisaosinowo/Roleplay-Game",
+   },
+   {
+      locator:
+         '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]',
+      name: "Snake Game",
+      url: "https://github.com/lisaosinowo/Snake-game",
+   },
+   {
+      locator:
+         '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]',
+      name: "Turtle Race Game",
+      url: "https://github.com/lisaosinowo/Turtle-race",
+   },
+   {
+      locator:
+         '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[5]',
+      name: "Quiz Game",
+      url: "https://github.com/lisaosinowo/Quiz-game",
+   },
+   {
+      locator:
+         '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[6]',
+      name: "BlackJack Game",
+      url: "https://github.com/lisaosinowo/BlackJack-game",
+   },
+   {
+      locator:
+         '//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[7]',
+      name: "Hangman Game",
+      url: "https://github.com/lisaosinowo/Hangman",
+   },
+];
+
+test.describe("Projects section visibility", () => {
+   headerAndParagraphCases.forEach(({ input }, index) => {
+      test(`text visibility - case ${index + 1}`, async ({ portfolio }) => {
+         await portfolio.isVisible(input);
       });
-
-   test('div visability', async({ portfolio }) => {
-      // GitHub profile
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div');
-
-      // Projects
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[5]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[6]');
-      await portfolio.isVisible('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[7]');
-   });
-})
-test.describe('Projects section texts', () => {
-   test('correct header and paragraph text', async({ portfolio }) => {
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/h1', 'My Projects 👾');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[1]', 'Click below to view my Github Profile:');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/p[2]', 'Here are some of my favourite projects! Click on one to view on Github:');
    });
 
-   test('correct github profile and project names', async({ portfolio }) => {
-      // GitHub profile
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div/p', 'GitHub Profile');
-
-      // Projects
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]/p', 'Inventory Management');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]/p', 'Roleplay Game');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]/p', 'Snake Game');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]/p', 'Turtle Race Game');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[5]/p', 'Quiz Game');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[6]/p', 'BlackJack Game');
-      await portfolio.hasText('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[7]/p', 'Hangman Game');
-   });   
+   projectCases.forEach(({ locator }, index) => {
+      test(`div visibility - case ${index + 1}`, async ({ portfolio }) => {
+         await portfolio.isVisible(locator);
+      });
+   });
 });
 
-test.describe('Project links',  () => {
-   test('links go to correct url', async({ portfolio }) => {
-      // GitHub profile
-      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[1]/div', 'https://github.com/lisaosinowo');
+test.describe("Projects section texts", () => {
+   headerAndParagraphCases.forEach(({ input, expected }, index) => {
+      test(`correct header and paragraph text - case ${index + 1}`, async ({
+         portfolio,
+      }) => {
+         await portfolio.hasText(input, expected);
+      });
+   });
 
-      // Projects
-      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[1]', 'https://github.com/lisaosinowo/inventory-management');
-      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[2]', 'https://github.com/lisaosinowo/Roleplay-Game');
-      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[3]', 'https://github.com/lisaosinowo/Snake-game');
-      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[4]', 'https://github.com/lisaosinowo/Turtle-race');
-      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[5]', 'https://github.com/lisaosinowo/Quiz-game');
-      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[6]', 'https://github.com/lisaosinowo/BlackJack-game');
-      await portfolio.goToNewPageAndVerifyUrl('//*[@id="root"]/div/div[2]/div/div[2]/div[3]/div/div/div/div[2]/div[7]', 'https://github.com/lisaosinowo/Hangman');
+   projectCases.forEach(({ locator, name }, index) => {
+      test(`correct github profile and project name - case ${index + 1}`, async ({
+         portfolio,
+      }) => {
+         await portfolio.hasText(`${locator}/p`, name);
+      });
+   });
+});
+
+test.describe("Project links", () => {
+   projectCases.forEach(({ locator, url }, index) => {
+      test(`links go to correct url - case ${index + 1}`, async ({
+         portfolio,
+      }) => {
+         await portfolio.goToNewPageAndVerifyUrl(locator, url);
+      });
    });
 });
 
