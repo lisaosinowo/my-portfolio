@@ -94,10 +94,6 @@ test.describe("Home page visibility", () => {
       });
    });
 
-   test("follow button visibility", async ({ portfolio }) => {
-      await portfolio.isVisible(followButtonLocator);
-   });
-
    test("main content container visibility", async ({ portfolio }) => {
       await portfolio.isVisible(mainContentLocator);
    });
@@ -116,6 +112,12 @@ test.describe("Home page texts", () => {
       }) => {
          await portfolio.hasText(input, expected);
       });
+   });
+});
+
+test.describe("Follow button", () => {
+   test("follow button visibility", async ({ portfolio }) => {
+      await portfolio.isVisible(followButtonLocator);
    });
 
    test("correct follow button text", async ({ portfolio }) => {
